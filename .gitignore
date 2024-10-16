@@ -18,4 +18,15 @@
 .glide/
 
 # Dependency directories (remove the comment below to include it)
-# vendor/
+ vendor/
+
+tmp
+.idea
+
+# Environments
+*.env*
+.env
+env/
+ENV/
+env.bak/
+
