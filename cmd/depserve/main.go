@@ -1,8 +1,10 @@
 package depserve
 
-import "github.com/mrpawan-gupta/depserve/server"
+import (
+	"github.com/mrpawan-gupta/depserve/internal/server"
+)
 
-func Run() {
+func RunServer() {
 	apiServer := server.NewAPIServer()
 	apiServer.InitRouter()
 	apiServer.InitMiddleWare()

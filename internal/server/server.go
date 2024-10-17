@@ -8,7 +8,6 @@ import (
 	"github.com/go-chi/chi/middleware"
 	config "github.com/mrpawan-gupta/depserve/configs"
 	"github.com/rs/cors"
-	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
 	"net/http"
@@ -19,7 +18,6 @@ import (
 
 // APIServer main api server configuration and settings
 type APIServer struct {
-	Version      string
 	ListenerAddr string
 	Host         string
 	Router       chi.Router
@@ -56,11 +54,11 @@ func (server *APIServer) initDatabase() {
 }
 
 func (server *APIServer) initDataSource(dataSourceName string) {
-	database, err := gorm.Open(postgres.Open(dataSourceName), &gorm.Config{})
-	if err != nil {
-		log.Fatalf("failed to connect database: %v", err)
-	}
-	server.db = database
+	//database, err := gorm.Open(postgres.Open(dataSourceName), &gorm.Config{})
+	//if err != nil {
+	//	log.Fatalf("failed to connect database: %v", err)
+	//}
+	//server.db = database
 }
 
 func (server *APIServer) setCors() {
@@ -104,7 +102,6 @@ func NewAPIServer() *APIServer {
 		Host:         conf.Api.Host,
 		Router:       router,
 		config:       conf,
-		Version:      "1.0",
 	}
 }
 
